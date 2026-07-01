@@ -1,0 +1,39 @@
+@import "tailwindcss";
+
+:root {
+  /* Brand Colors */
+  --color-solar-yellow: #F9C74F;
+  --color-solar-orange: #F9844A;
+  --color-eco-green: #43AA8B;
+  --color-deep-blue: #1D3557;
+  --color-electric-blue: #00B4D8;
+  --color-background-light: #F8FAFC;
+
+  /* Base Styles */
+  --background: #F8FAFC;
+  --foreground: #1D3557;
+}
+
+@theme {
+  --color-solar-yellow: var(--color-solar-yellow);
+  --color-solar-orange: var(--color-solar-orange);
+  --color-eco-green: var(--color-eco-green);
+  --color-deep-blue: var(--color-deep-blue);
+  --color-electric-blue: var(--color-electric-blue);
+  --color-background-light: var(--color-background-light);
+  
+  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, SFMono-Regular, monospace;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+}
+
+/* Helper for masonry layout if needed */
+.masonry-grid {
+    display: flex;
+    width: auto;
+}
