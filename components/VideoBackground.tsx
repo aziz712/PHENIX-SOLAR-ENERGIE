@@ -1,62 +1,61 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 
 export default function VideoBackground() {
-    const [isPlaying, setIsPlaying] = useState(false);
     const videoRef = useRef<HTMLVideoElement | null>(null);
-    const autoplayAttemptedRef = useRef(false);
 
     useEffect(() => {
         if (typeof window === "undefined") return;
 
         const video = videoRef.current;
-        if (!video || autoplayAttemptedRef.current) return;
+        if (!video) return;
 
-        // Function to attempt autoplay
-        const attemptAutoplay = async () => {
-            if (autoplayAttemptedRef.current) return;
-            autoplayAttemptedRef.current = true;
+        // Ensure video is muted (required for autoplay)
+        video.muted = true;
+        video.volume = 0;
 
+        const playVideo = async () => {
             try {
-                video.muted = true;
                 await video.play();
-                setIsPlaying(true);
+                console.log("Video playing successfully");
             } catch (error) {
-                console.error("Video autoplay failed:", error);
-                setIsPlaying(false);
+                console.error("Video play error:", error);
+                // Retry after a delay if failed
+                setTimeout(() => {
+                    video.play().catch((err) => console.error("Retry failed:", err));
+                }, 2000);
             }
         };
 
-        // Try multiple approaches for better reliability
-        const canPlayHandler = () => {
-            attemptAutoplay();
+        // Use canplay event - fires when enough data is buffered to play
+        const handleCanPlay = () => {
+            console.log("Video can play, attempting autoplay...");
+            playVideo();
         };
 
-        const loadedDataHandler = () => {
-            attemptAutoplay();
+        // Fallback: try to play when metadata loads
+        const handleLoadedMetadata = () => {
+            console.log("Metadata loaded");
+            if (!video.paused) return; // Already playing
+            playVideo();
         };
 
-        // Check if video can already play
-        if (video.readyState >= 2) {
-            // HAVE_CURRENT_DATA or more - video data is loaded
-            attemptAutoplay();
-        } else {
-            // Listen to multiple events for better coverage
-            video.addEventListener("canplay", canPlayHandler, { once: true });
-            video.addEventListener("loadeddata", loadedDataHandler, { once: true });
+        // Listen to events
+        video.addEventListener("canplay", handleCanPlay, { once: true });
+        video.addEventListener("loadedmetadata", handleLoadedMetadata);
 
-            // Fallback: try after a short delay
-            const timeoutId = setTimeout(() => {
-                attemptAutoplay();
-            }, 1500);
+        // Additional fallback with timeout
+        const fallbackTimeout = setTimeout(() => {
+            console.log("Timeout fallback - attempting to play");
+            playVideo();
+        }, 3000);
 
-            return () => {
-                clearTimeout(timeoutId);
-                video.removeEventListener("canplay", canPlayHandler);
-                video.removeEventListener("loadeddata", loadedDataHandler);
-            };
-        }
+        return () => {
+            clearTimeout(fallbackTimeout);
+            video.removeEventListener("canplay", handleCanPlay);
+            video.removeEventListener("loadedmetadata", handleLoadedMetadata);
+        };
     }, []);
 
     return (
@@ -65,14 +64,11 @@ export default function VideoBackground() {
             loop
             muted
             playsInline
-            preload="auto"
-            crossOrigin="anonymous"
+            preload="metadata"
             poster="/video-poster.jpg"
             className="absolute inset-0 w-full h-full object-cover"
-            onPlaying={() => setIsPlaying(true)}
-            onPause={() => setIsPlaying(false)}
             onError={(e) => {
-                console.error("Video error:", e.currentTarget.error);
+                console.error("Video element error:", e.currentTarget.error);
             }}
         >
             <source src="/background-video.mp4" type="video/mp4" />
