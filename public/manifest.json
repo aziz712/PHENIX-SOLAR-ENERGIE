@@ -4,15 +4,16 @@
     "description": "Leader en installation de panneaux photovoltaïques en Tunisie",
     "start_url": "/",
     "scope": "/",
-    "display": "standalone",
-    "background_color": "#ffffff",
+    "display": "minimal-ui",
+    "background_color": "#1a1a1a",
     "theme_color": "#EC6608",
     "orientation": "portrait-primary",
     "icons": [
         {
             "src": "/icons/icon-192x192.png",
             "sizes": "192x192",
-            "type": "image/png"
+            "type": "image/png",
+            "purpose": "any"
         },
         {
             "src": "/icons/icon-512x512.png",
