@@ -22,8 +22,8 @@ export const metadata: Metadata = {
   description: "Leader en installation de panneaux photovoltaïques en Tunisie. Solutions solaires pour résidences, industries et agriculture.",
   manifest: "/manifest.json",
   icons: {
-    icon: "/icons/icon-192x192.png",
-    apple: "/icons/icon-512x512.png",
+    icon: "/icons/pwa-icon.png",
+    apple: "/icons/pwa-icon.png",
   },
   appleWebApp: {
     capable: true,
@@ -53,8 +53,8 @@ export default function RootLayout({
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="default" />
         <link rel="manifest" href="/manifest.json" />
-        <link rel="apple-touch-icon" sizes="180x180" href="/icons/icon-192x192.png" />
-        <link rel="mask-icon" href="/icons/icon-512x512.png" color="#EC6608" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/icons/pwa-icon.png" />
+        <link rel="mask-icon" href="/icons/pwa-icon.png" color="#EC6608" />
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-background-light min-h-screen flex flex-col`}
