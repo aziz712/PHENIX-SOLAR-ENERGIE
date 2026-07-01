@@ -4,58 +4,55 @@ import { useEffect, useRef } from "react";
 
 export default function VideoBackground() {
     const videoRef = useRef<HTMLVideoElement | null>(null);
+    const hasAttemptedPlayRef = useRef(false);
 
     useEffect(() => {
         if (typeof window === "undefined") return;
 
         const video = videoRef.current;
-        if (!video) return;
+        if (!video || hasAttemptedPlayRef.current) return;
 
-        // Ensure video is muted (required for autoplay)
+        // Ensure muted state (required for autoplay)
         video.muted = true;
         video.volume = 0;
 
-        const playVideo = async () => {
+        const attemptPlay = async () => {
+            if (hasAttemptedPlayRef.current) return;
+            hasAttemptedPlayRef.current = true;
+
             try {
                 await video.play();
-                console.log("Video playing successfully");
+                console.log("[VideoBackground] ✅ Video playing");
             } catch (error) {
-                console.error("Video play error:", error);
-                // Retry after a delay if failed
-                setTimeout(() => {
-                    video.play().catch((err) => console.error("Retry failed:", err));
-                }, 2000);
+                console.warn("[VideoBackground] ⚠️ Autoplay blocked:", error);
+                // Poster will show as fallback
             }
         };
 
-        // Use canplay event - fires when enough data is buffered to play
-        const handleCanPlay = () => {
-            console.log("Video can play, attempting autoplay...");
-            playVideo();
-        };
+        // Try to play once video is ready
+        if (video.readyState >= 2) {
+            // HAVE_CURRENT_DATA - enough data to play
+            attemptPlay();
+        } else {
+            // Wait for canplay event (more reliable than loadedmetadata)
+            const handleCanPlay = () => {
+                console.log("[VideoBackground] Video is ready to play (canplay event)");
+                attemptPlay();
+            };
 
-        // Fallback: try to play when metadata loads
-        const handleLoadedMetadata = () => {
-            console.log("Metadata loaded");
-            if (!video.paused) return; // Already playing
-            playVideo();
-        };
+            video.addEventListener("canplay", handleCanPlay, { once: true });
 
-        // Listen to events
-        video.addEventListener("canplay", handleCanPlay, { once: true });
-        video.addEventListener("loadedmetadata", handleLoadedMetadata);
+            // Safety timeout in case events don't fire
+            const timeoutId = setTimeout(() => {
+                console.log("[VideoBackground] Timeout: attempting to play anyway");
+                attemptPlay();
+            }, 4000);
 
-        // Additional fallback with timeout
-        const fallbackTimeout = setTimeout(() => {
-            console.log("Timeout fallback - attempting to play");
-            playVideo();
-        }, 3000);
-
-        return () => {
-            clearTimeout(fallbackTimeout);
-            video.removeEventListener("canplay", handleCanPlay);
-            video.removeEventListener("loadedmetadata", handleLoadedMetadata);
-        };
+            return () => {
+                clearTimeout(timeoutId);
+                video.removeEventListener("canplay", handleCanPlay);
+            };
+        }
     }, []);
 
     return (
@@ -64,11 +61,11 @@ export default function VideoBackground() {
             loop
             muted
             playsInline
-            preload="metadata"
+            preload="auto"
             poster="/video-poster.jpg"
             className="absolute inset-0 w-full h-full object-cover"
             onError={(e) => {
-                console.error("Video element error:", e.currentTarget.error);
+                console.error("[VideoBackground] ❌ Video error:", e.currentTarget.error?.message);
             }}
         >
             <source src="/background-video.mp4" type="video/mp4" />
