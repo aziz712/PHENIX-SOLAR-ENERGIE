@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { ArrowRight, CheckCircle2, Zap, Home, Factory, Sprout, MapPin, BadgeCheck, Phone, HelpCircle, Sun, ShieldCheck } from "lucide-react";
 import FAQAccordion from "@/components/FAQAccordion";
+import VideoBackground from "@/components/VideoBackground";
 import { motion } from "framer-motion";
 
 export default function HomePage() {
@@ -11,17 +12,7 @@ export default function HomePage() {
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-deep-blue">
         <div className="absolute inset-0 z-0">
-          <video
-            autoPlay
-            loop
-            muted
-            playsInline
-            preload="metadata"
-            poster="/video-poster.jpg"
-            className="absolute inset-0 w-full h-full object-cover"
-          >
-            <source src="/background-video.mp4" type="video/mp4" />
-          </video>
+          <VideoBackground />
           {/* Dark Overlay for readability */}
           <div className="absolute inset-0 bg-black/60 z-10" />
         </div>
