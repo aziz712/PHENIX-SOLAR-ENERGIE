@@ -56,8 +56,9 @@ export default function RootLayout({
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="default" />
         <link rel="manifest" href="/manifest.json" />
-        <link rel="apple-touch-icon" sizes="180x180" href="/icons/pwa-icon.png" />
-        <link rel="mask-icon" href="/icons/pwa-icon.png" color="#EC6608" />
+        <link rel="apple-touch-icon" sizes="192x192" href="/icons/icon-192x192.png" />
+        <link rel="icon" sizes="192x192" href="/icons/icon-192x192.png" />
+        <link rel="icon" sizes="512x512" href="/icons/icon-512x512.png" />
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-background-light min-h-screen flex flex-col`}

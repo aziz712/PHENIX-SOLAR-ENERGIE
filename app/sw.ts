@@ -1,7 +1,7 @@
 import { defaultCache } from "@serwist/next/worker";
 import type { PrecacheEntry, SerwistGlobalConfig } from "serwist";
 import { Serwist } from "serwist";
-import { CacheExpiration, CacheFirst, NetworkFirst, StaleWhileRevalidate } from "serwist";
+import { CacheFirst, NetworkFirst } from "serwist";
 
 declare global {
   interface WorkerGlobalScope extends SerwistGlobalConfig {
@@ -38,14 +38,35 @@ serwist.addEventListener("message", (event) => {
 
 serwist.addEventListeners();
 
-// Error handling for fetch events
+// Enhanced error handling for fetch events
 self.addEventListener("fetch", (event) => {
-  // Prevent unhandled promise rejections
-  if (event.request.destination === "video" || event.request.destination === "audio") {
+  const { request } = event;
+
+  // Skip non-GET requests
+  if (request.method !== "GET") {
+    return;
+  }
+
+  // Handle navigation requests (HTML pages)
+  if (request.mode === "navigate") {
     event.respondWith(
-      fetch(event.request).catch(() => {
+      fetch(request)
+        .catch(() => {
+          // If offline, serve the offline page
+          const urlObj = new URL("/offline", self.location.origin);
+          return caches.match(urlObj.toString()) || new Response("Offline", { status: 503 });
+        })
+    );
+    return;
+  }
+
+  // Handle media requests (video/audio)
+  if (request.destination === "video" || request.destination === "audio") {
+    event.respondWith(
+      fetch(request).catch(() => {
         return new Response("Media unavailable", { status: 503 });
       })
     );
+    return;
   }
 });
