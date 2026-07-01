@@ -39,6 +39,4 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
-public/video-poster.jpg
-public/background-video.mp4
 
