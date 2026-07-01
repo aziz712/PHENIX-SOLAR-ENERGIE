@@ -1,7 +1,7 @@
 import { defaultCache } from "@serwist/next/worker";
 import type { PrecacheEntry, SerwistGlobalConfig } from "serwist";
 import { Serwist } from "serwist";
-import { CacheFirst, NetworkFirst } from "serwist";
+import { NetworkFirst } from "serwist";
 
 declare global {
   interface WorkerGlobalScope extends SerwistGlobalConfig {
@@ -30,12 +30,6 @@ const serwist = new Serwist({
   ],
 });
 
-serwist.addEventListener("message", (event) => {
-  if (event.data && event.data.type === "SKIP_WAITING") {
-    serwist.skipWaiting();
-  }
-});
-
 serwist.addEventListeners();
 
 // Enhanced error handling for fetch events
@@ -50,12 +44,12 @@ self.addEventListener("fetch", (event) => {
   // Handle navigation requests (HTML pages)
   if (request.mode === "navigate") {
     event.respondWith(
-      fetch(request)
-        .catch(() => {
-          // If offline, serve the offline page
-          const urlObj = new URL("/offline", self.location.origin);
-          return caches.match(urlObj.toString()) || new Response("Offline", { status: 503 });
-        })
+      fetch(request).catch(async () => {
+        // If offline, serve the offline page
+        const urlObj = new URL("/offline", self.location.origin);
+        const cachedResponse = await caches.match(urlObj.toString());
+        return cachedResponse || new Response("Offline", { status: 503 });
+      })
     );
     return;
   }
