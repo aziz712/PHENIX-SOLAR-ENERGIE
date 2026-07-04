@@ -90,32 +90,32 @@ export default function VideoBackground() {
             onError={(e) => {
                 const video = e.currentTarget;
                 const error = video.error;
-                
+
                 // Detailed error logging for debugging
                 console.error('[VideoBackground] Video error details:', {
                     code: error?.code,
                     message: error?.message,
-                    codeName: 
+                    codeName:
                         error?.code === 1 ? 'MEDIA_ERR_ABORTED' :
-                        error?.code === 2 ? 'MEDIA_ERR_NETWORK' :
-                        error?.code === 3 ? 'MEDIA_ERR_DECODE' :
-                        error?.code === 4 ? 'MEDIA_ERR_SRC_NOT_SUPPORTED' :
-                        'UNKNOWN',
+                            error?.code === 2 ? 'MEDIA_ERR_NETWORK' :
+                                error?.code === 3 ? 'MEDIA_ERR_DECODE' :
+                                    error?.code === 4 ? 'MEDIA_ERR_SRC_NOT_SUPPORTED' :
+                                        'UNKNOWN',
                     networkState: video.networkState,
                     networkStateName:
                         video.networkState === 0 ? 'NETWORK_EMPTY' :
-                        video.networkState === 1 ? 'NETWORK_IDLE' :
-                        video.networkState === 2 ? 'NETWORK_LOADING' :
-                        video.networkState === 3 ? 'NETWORK_NO_SOURCE' :
-                        'UNKNOWN',
+                            video.networkState === 1 ? 'NETWORK_IDLE' :
+                                video.networkState === 2 ? 'NETWORK_LOADING' :
+                                    video.networkState === 3 ? 'NETWORK_NO_SOURCE' :
+                                        'UNKNOWN',
                     readyState: video.readyState,
                     readyStateName:
                         video.readyState === 0 ? 'HAVE_NOTHING' :
-                        video.readyState === 1 ? 'HAVE_METADATA' :
-                        video.readyState === 2 ? 'HAVE_CURRENT_DATA' :
-                        video.readyState === 3 ? 'HAVE_FUTURE_DATA' :
-                        video.readyState === 4 ? 'HAVE_ENOUGH_DATA' :
-                        'UNKNOWN',
+                            video.readyState === 1 ? 'HAVE_METADATA' :
+                                video.readyState === 2 ? 'HAVE_CURRENT_DATA' :
+                                    video.readyState === 3 ? 'HAVE_FUTURE_DATA' :
+                                        video.readyState === 4 ? 'HAVE_ENOUGH_DATA' :
+                                            'UNKNOWN',
                     currentSrc: video.currentSrc,
                     duration: video.duration,
                     buffered: video.buffered.length > 0 ? `${video.buffered.end(0).toFixed(2)}s` : 'none',
