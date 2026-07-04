@@ -59,6 +59,7 @@ export async function POST(req: Request) {
                 filename: "logo.png",
                 path: logoPath,
                 cid: "logo@phenix",
+                disposition: "inline",
             }],
         };
 
