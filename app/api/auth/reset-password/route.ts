@@ -45,9 +45,7 @@ export async function POST(req: Request) {
         // Read and populate HTML template
         const templatePath = path.join(process.cwd(), "templates", "reset-password.html");
         let htmlTemplate = fs.readFileSync(templatePath, "utf-8");
-        htmlTemplate = htmlTemplate
-            .replace("{{PASSWORD}}", newPassword)
-            .replace("{{LOGIN_URL}}", `${process.env.NEXT_PUBLIC_APP_URL || "https://phenix-solar-energie.com"}/login`);
+        htmlTemplate = htmlTemplate.replace("{{PASSWORD}}", newPassword);
 
         const mailOptions = {
             from: process.env.EMAIL_USER,
