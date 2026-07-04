@@ -3,6 +3,8 @@ import connectDB from "@/lib/db";
 import User from "@/models/User";
 import bcrypt from "bcryptjs";
 import nodemailer from "nodemailer";
+import fs from "fs";
+import path from "path";
 
 export async function POST(req: Request) {
     try {
@@ -40,11 +42,19 @@ export async function POST(req: Request) {
             },
         });
 
+        // Read and populate HTML template
+        const templatePath = path.join(process.cwd(), "templates", "reset-password.html");
+        let htmlTemplate = fs.readFileSync(templatePath, "utf-8");
+        htmlTemplate = htmlTemplate
+            .replace("{{PASSWORD}}", newPassword)
+            .replace("{{LOGIN_URL}}", `${process.env.NEXT_PUBLIC_APP_URL || "https://phenix-solar-energie.com"}/login`);
+
         const mailOptions = {
             from: process.env.EMAIL_USER,
             to: email,
             subject: "Réinitialisation de votre mot de passe - PHÉNIX SOLAR ÉNERGIE",
             text: `Votre nouveau mot de passe est : ${newPassword}\n\nVeuillez vous connecter et changer votre mot de passe dès que possible.`,
+            html: htmlTemplate,
         };
 
         try {
