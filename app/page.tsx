@@ -142,7 +142,7 @@ export default function HomePage() {
             </div>
 
             <p className="text-gray-200">
-              Que vous soyez à <strong>Sousse</strong>, <strong>Tunis</strong>, <strong>Sfax</strong> ou n'importe où en Tunisie, PHÉNIX SOLAR ÉNERGIE vous accompagne pour dimensionner la centrale solaire idéale pour vos besoins. Nous utilisons des technologies de pointe (panneaux monocristallins, onduleurs hybrides) pour garantir un rendement optimal même en cas de fortes chaleurs.
+              Que vous soyez à <strong>Sousse</strong>, <strong>Tunis</strong>, <strong>Sfax</strong> ou n'importe où en Tunisie, PHOENIX SOLAR ENERGY vous accompagne pour dimensionner la centrale solaire idéale pour vos besoins. Nous utilisons des technologies de pointe (panneaux monocristallins, onduleurs hybrides) pour garantir un rendement optimal même en cas de fortes chaleurs.
             </p>
           </div>
         </div>
@@ -260,7 +260,7 @@ export default function HomePage() {
             <h2 className="text-3xl md:text-4xl font-bold mb-6">Votre installateur solaire de confiance partout en Tunisie</h2>
             <div className="space-y-6 text-gray-300 text-lg">
               <p>
-                Chez <strong>PHÉNIX SOLAR ÉNERGIE</strong>, nous sommes plus qu'un simple installateur. Nous sommes votre partenaire énergie durable. Basés au cœur de la Tunisie, nous intervenons rapidement dans tous les gouvernorats.
+                Chez <strong>PHOENIX SOLAR ENERGY</strong>, nous sommes plus qu'un simple installateur. Nous sommes votre partenaire énergie durable. Basés au cœur de la Tunisie, nous intervenons rapidement dans tous les gouvernorats.
               </p>
               <ul className="grid grid-cols-2 gap-4">
                 <li className="flex items-center gap-2"><MapPin className="text-solar-yellow w-5 h-5" /> Installation à Tunis</li>
@@ -357,7 +357,7 @@ export default function HomePage() {
             transition={{ duration: 0.5, delay: 0.4 }}
             className="text-xl text-deep-blue/80 font-medium mb-10 max-w-2xl mx-auto"
           >
-            Ne laissez plus le soleil briller pour rien. Rejoignez les centaines de foyers tunisiens qui ont choisi PHÉNIX SOLAR ÉNERGIE.
+            Ne laissez plus le soleil briller pour rien. Rejoignez les centaines de foyers tunisiens qui ont choisi PHOENIX SOLAR ENERGY.
           </motion.p>
           <motion.div
             initial={{ y: 20, opacity: 0 }}

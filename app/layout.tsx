@@ -18,7 +18,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "PHÉNIX SOLAR ÉNERGIE - Installation Photovoltaïque Tunisie",
+  title: "PHOENIX SOLAR ENERGY - Installation Photovoltaïque Tunisie",
   description: "Leader en installation de panneaux photovoltaïques en Tunisie. Solutions solaires pour résidences, industries et agriculture.",
   manifest: "/manifest.json",
   icons: {
@@ -31,7 +31,7 @@ export const metadata: Metadata = {
   appleWebApp: {
     capable: true,
     statusBarStyle: "default",
-    title: "PHÉNIX SOLAR ÉNERGIE",
+    title: "PHOENIX SOLAR ENERGY",
   },
 };
 

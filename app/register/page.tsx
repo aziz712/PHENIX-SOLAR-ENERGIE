@@ -55,7 +55,7 @@ export default function RegisterPage() {
                     <Link href="/" className="inline-flex items-center">
                         <img
                             src="/logo.png"
-                            alt="PHÉNIX SOLAR ÉNERGIE Logo"
+                            alt="PHOENIX SOLAR ENERGY Logo"
                             className="h-35 w-auto "
                         />
                     </Link>

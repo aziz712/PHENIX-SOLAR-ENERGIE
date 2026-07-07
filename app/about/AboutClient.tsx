@@ -24,7 +24,7 @@ export default function AboutPage() {
                         transition={{ delay: 0.2 }}
                         className="text-xl text-gray-300"
                     >
-                        PHÉNIX SOLAR ÉNERGIE est votre expert en solutions photovoltaïques en Tunisie.
+                        PHOENIX SOLAR ENERGY est votre expert en solutions photovoltaïques en Tunisie.
                         Nous nous engageons pour une transition énergétique durable et accessible.
                     </motion.p>
                 </div>
@@ -57,7 +57,7 @@ export default function AboutPage() {
                     >
                         <h2 className="text-3xl font-bold text-deep-blue mb-6">Notre Mission</h2>
                         <p className="text-lg text-gray-600 mb-6 leading-relaxed">
-                            Chez PHÉNIX SOLAR ÉNERGIE, notre mission est simple : <strong>démocratiser l'accès à l'énergie solaire</strong> pour tous les Tunisiens.
+                            Chez PHOENIX SOLAR ENERGY, notre mission est simple : <strong>démocratiser l'accès à l'énergie solaire</strong> pour tous les Tunisiens.
                             Nous croyons que chaque toit a le potentiel de devenir une centrale d'énergie propre.
                         </p>
                         <p className="text-lg text-gray-600 mb-8 leading-relaxed">

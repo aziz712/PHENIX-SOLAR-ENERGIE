@@ -81,7 +81,7 @@ export default function ContactPage() {
                         <MapWrapper
                             interactive={false}
                             initialCenter={[36.8065, 10.1815]}
-                            markers={[{ lat: 36.8065, lng: 10.1815, title: "PHÉNIX SOLAR ÉNERGIE Tunis" }]}
+                            markers={[{ lat: 36.8065, lng: 10.1815, title: "PHOENIX SOLAR ENERGY Tunis" }]}
                         />
                     </motion.div>
                 </div>

@@ -2,8 +2,8 @@ import { ArrowLeft } from "lucide-react";
 import Link from "next/link";
 
 export const metadata = {
-    title: "Conditions d'Utilisation - PHÉNIX SOLAR ÉNERGIE",
-    description: "Conditions générales d'utilisation du site PHÉNIX SOLAR ÉNERGIE",
+    title: "Conditions d'Utilisation - PHOENIX SOLAR ENERGY",
+    description: "Conditions générales d'utilisation du site PHOENIX SOLAR ENERGY",
 };
 
 export default function TermsPage() {
@@ -37,7 +37,7 @@ export default function TermsPage() {
                     <section>
                         <h2 className="text-2xl font-semibold text-deep-blue mt-8 mb-4">3. Propriété Intellectuelle</h2>
                         <p>
-                            Tous les contenus du site (textes, images, logos, vidéos) sont la propriété de PHÉNIX SOLAR ÉNERGIE ou de ses
+                            Tous les contenus du site (textes, images, logos, vidéos) sont la propriété de PHOENIX SOLAR ENERGY ou de ses
                             fournisseurs. Toute reproduction sans autorisation écrite est interdite.
                         </p>
                     </section>
@@ -45,7 +45,7 @@ export default function TermsPage() {
                     <section>
                         <h2 className="text-2xl font-semibold text-deep-blue mt-8 mb-4">4. Limitation de Responsabilité</h2>
                         <p>
-                            PHÉNIX SOLAR ÉNERGIE ne sera pas responsable de tout dommage direct, indirect ou accidentel résultant de l'utilisation
+                            PHOENIX SOLAR ENERGY ne sera pas responsable de tout dommage direct, indirect ou accidentel résultant de l'utilisation
                             de ce site ou de son contenu.
                         </p>
                     </section>
@@ -53,7 +53,7 @@ export default function TermsPage() {
                     <section>
                         <h2 className="text-2xl font-semibold text-deep-blue mt-8 mb-4">5. Modifications</h2>
                         <p>
-                            PHÉNIX SOLAR ÉNERGIE se réserve le droit de modifier ces conditions à tout moment. Les modifications entreront en
+                            PHOENIX SOLAR ENERGY se réserve le droit de modifier ces conditions à tout moment. Les modifications entreront en
                             vigueur dès leur publication.
                         </p>
                     </section>

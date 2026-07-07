@@ -11,7 +11,7 @@ const Footer = () => {
                         <Link href="/" className="flex items-center mb-4">
                             <img
                                 src="/footer-logo.png"
-                                alt="PHÉNIX SOLAR ÉNERGIE Logo"
+                                alt="PHOENIX SOLAR ENERGY Logo"
                                 className="h-28 w-auto "
                             />
                         </Link>
@@ -76,7 +76,7 @@ const Footer = () => {
 
                 <div className="border-t border-gray-700 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
                     <p className="text-gray-400 text-sm">
-                        © {new Date().getFullYear()} PHÉNIX SOLAR ÉNERGIE. Tous droits réservés.
+                        © {new Date().getFullYear()} PHOENIX SOLAR ENERGY. Tous droits réservés.
                     </p>
                     <div className="flex space-x-6 text-sm text-gray-400">
                         <Link href="/privacy" className="hover:text-white">Confidentialité</Link>

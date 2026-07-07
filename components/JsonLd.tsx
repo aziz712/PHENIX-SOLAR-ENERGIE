@@ -2,7 +2,7 @@ export default function JsonLd() {
     const jsonLd = {
         "@context": "https://schema.org",
         "@type": "LocalBusiness",
-        "name": "PHÉNIX SOLAR ÉNERGIE",
+        "name": "PHOENIX SOLAR ENERGY",
         "image": "https://phenixsolarenergie.tn/logo.png",
         "@id": "https://phenixsolarenergie.tn",
         "url": "https://phenixsolarenergie.tn",

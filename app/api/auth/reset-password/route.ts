@@ -47,20 +47,16 @@ export async function POST(req: Request) {
         let htmlTemplate = fs.readFileSync(templatePath, "utf-8");
         htmlTemplate = htmlTemplate.replace("{{PASSWORD}}", newPassword);
 
-        const logoPath = path.join(process.cwd(), "public", "logo.png");
+        const origin = new URL(req.url).origin;
+        const logoUrl = `${origin}/logo.png`;
+        htmlTemplate = htmlTemplate.replace("{{LOGO_URL}}", logoUrl);
 
         const mailOptions = {
             from: process.env.EMAIL_USER,
             to: email,
-            subject: "Réinitialisation de votre mot de passe - PHÉNIX SOLAR ÉNERGIE",
+            subject: "Réinitialisation de votre mot de passe - PHOENIX SOLAR ENERGY",
             text: `Votre nouveau mot de passe est : ${newPassword}\n\nVeuillez vous connecter et changer votre mot de passe dès que possible.`,
             html: htmlTemplate,
-            attachments: [{
-                filename: "logo.png",
-                path: logoPath,
-                cid: "logo@phenix",
-                disposition: "inline",
-            }],
         };
 
         try {

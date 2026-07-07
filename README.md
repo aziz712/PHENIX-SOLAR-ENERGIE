@@ -1,6 +1,6 @@
-# ☀️ PHÉNIX SOLAR ÉNERGIE - Plateforme Web
+# ☀️ PHOENIX SOLAR ENERGY - Plateforme Web
 
-Bienvenue sur le dépôt officiel du site web et de la plateforme de gestion de **PHÉNIX SOLAR ÉNERGIE**, leader de l'installation photovoltaïque en Tunisie.
+Bienvenue sur le dépôt officiel du site web et de la plateforme de gestion de **PHOENIX SOLAR ENERGY**, leader de l'installation photovoltaïque en Tunisie.
 
 Cette application est une solution complète (Site Vitrine + Tableau de Bord Admin + Espace Client) développée avec les technologies web les plus modernes pour garantir performance, SEO, et expérience utilisateur fluide.
 
@@ -126,4 +126,4 @@ L'application est configurée pour être installable.
 
 ---
 
-Droit d'auteur © 2025 PHÉNIX SOLAR ÉNERGIE. Tous droits réservés.
+Droit d'auteur © 2025 PHOENIX SOLAR ENERGY. Tous droits réservés.

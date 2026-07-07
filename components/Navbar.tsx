@@ -28,7 +28,7 @@ const Navbar = () => {
                         <Link href="/" className="shrink-0 flex items-center">
                             <img
                                 src="/logo.png"
-                                alt="PHÉNIX SOLAR ÉNERGIE Logo"
+                                alt="PHOENIX SOLAR ENERGY Logo"
                                 className="h-17  w-auto"
                             />
                         </Link>

@@ -2,8 +2,8 @@ import { ArrowLeft } from "lucide-react";
 import Link from "next/link";
 
 export const metadata = {
-    title: "Politique de Confidentialité - PHÉNIX SOLAR ÉNERGIE",
-    description: "Politique de confidentialité et protection des données du site PHÉNIX SOLAR ÉNERGIE",
+    title: "Politique de Confidentialité - PHOENIX SOLAR ENERGY",
+    description: "Politique de confidentialité et protection des données du site PHOENIX SOLAR ENERGY",
 };
 
 export default function PrivacyPage() {
@@ -74,7 +74,7 @@ export default function PrivacyPage() {
                     <section>
                         <h2 className="text-2xl font-semibold text-deep-blue mt-8 mb-4">7. Modifications</h2>
                         <p>
-                            PHÉNIX SOLAR ÉNERGIE se réserve le droit de modifier cette politique de confidentialité à tout moment. Les
+                            PHOENIX SOLAR ENERGY se réserve le droit de modifier cette politique de confidentialité à tout moment. Les
                             modifications entreront en vigueur dès leur publication.
                         </p>
                     </section>
